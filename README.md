@@ -37,10 +37,10 @@ rm -rf terraform.tfstate*
 
 ### 06. AWS VPC 3-Tier Architecture Design using Terraform
     - Create VPC [module]
-    - Create Public and Private Subnets
+    - Create Public 10.0.1.0/24 and Private Subnets 10.0.101.0/24 us-east-1a
     - Create Internet Gateway and Associate to VPC
     - Create NAT Gateway in Public Subnet
-    - Create Public Route Table, Add Public Route via Internet Gateway and Associate Public Subnet
+    - Create Public Route Table, Add Public Route via Internet Gateway and Associate    Public Subnet 0.0.0.0 -> Internet Gateway
     - Create Private Route Table, Add Private Route via NAT Gateway and Associate Private Subnet
 ![alt text](image-3.png)
 
