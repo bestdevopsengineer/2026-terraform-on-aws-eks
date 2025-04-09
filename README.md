@@ -36,6 +36,7 @@ rm -rf terraform.tfstate*
     04- we get that list 
 
 ### 06. AWS VPC 3-Tier Architecture Design using Terraform
+    06-01 manually
     - Create VPC [module]
     - Create Public 10.0.1.0/24 and Private Subnets 10.0.101.0/24 us-east-1a
     - Create Internet Gateway and Associate to VPC
@@ -44,8 +45,46 @@ rm -rf terraform.tfstate*
     - Create Private Route Table, Add Private Route via NAT Gateway and Associate Private Subnet
 ![alt text](image-3.png)
 
-07. Bastion Host AWS EC2 Instances, Security Groups, TF Provisioners with Terraform 
-08. AWS EKS Cluster, Public and Private Node Groups using Terraform
+    06-02
+        v1 - vpc module
+        v2 - vpc module | vpc variables | vpc.auto.tfvars
+             terraform.tfvars (autoloaded)
+             local-value (name concatenation)
+
+### 07. Bastion Host AWS EC2 Instances, Security Groups, TF Provisioners with Terraform 
+    - bastion
+    - vpc module
+    - null_resource: provisioner not associated with a resource
+    - provisioner "file" :(ssh,winrm connections ) local desktop -> ec2 created
+    - provisioner "remote-exec" : run a script inside the remote resource created 
+    - provisioner "local-exec": run a script in my laptop after the cloud resource is created
+        create a file on my laptop after the deployment is done
+
+![alt text](image-5.png)
+![alt text](image-4.png)   
+
+### 08. AWS EKS Cluster, Public and Private Node Groups using Terraform
+    *- eks control plane (amazon eks ,vpc) 
+        - eks elastic network interface [az1 | az2] (my-vpc )
+        *- eks cluster security group (automatically created when creating cluster)
+        *- iam role eks cluster [create role and associate with 2 policies]
+            - AmazonEKSClusterPolicy
+            - AmazonEKSVPCResourceController
+    - eks node group
+        *- iam role eks cluster [create role and associate with 3 policies]
+            - AmazonEKSWorkerNodePolicy
+            - AmazonEKS_CNI_Policy
+            - AmazonEC2ContainerRegistryReadOnly
+
+        *- public eks node group [az1 | az2] (my-vpc )
+            - eks security node group in public subnet (SG-port 22)
+        *- private eks node group [az1 | az2] (my-vpc )
+            - eks security node group in private subnet (SG-port 22)
+        
+
+![alt text](image-6.png)
+![alt text](image-7.png)
+![alt text](image-8.png)
 09. Kubernetes Fundamentals
 10. Kubernetes Deployment and Service using YAML
 11. Terraform Kubernetes Provider - Kubernetes Deployment & Service
