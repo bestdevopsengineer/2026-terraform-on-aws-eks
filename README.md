@@ -20,8 +20,30 @@ rm -rf terraform.tfstate*
 ![alt text](image-2.png)
 
 ### 04. Terraform Input Variables, Output Values, Datasources
-05. Terraform Loops, MetaArguments, Splat Operator and Functions
-06. AWS VPC 3-Tier Architecture Design using Terraform
+    [ec2: website userdata]
+    variables|security group(80,443) | Latest ami-datasource | outputs 
+
+### 05. Terraform Loops, MetaArguments, Splat Operator and Functions
+    01-
+    [ec2: website userdata]| [ count 2 ec2 ]
+    variables (list|map)|security group(80,443) | Latest ami-datasource | outputs for loop list,map
+    
+    02-add availability zone available in the region in for each
+    error (we can not create ec2 in subnet us-east-1e)
+
+    03-find availability zone that we can use
+
+    04- we get that list 
+
+### 06. AWS VPC 3-Tier Architecture Design using Terraform
+    - Create VPC [module]
+    - Create Public and Private Subnets
+    - Create Internet Gateway and Associate to VPC
+    - Create NAT Gateway in Public Subnet
+    - Create Public Route Table, Add Public Route via Internet Gateway and Associate Public Subnet
+    - Create Private Route Table, Add Private Route via NAT Gateway and Associate Private Subnet
+![alt text](image-3.png)
+
 07. Bastion Host AWS EC2 Instances, Security Groups, TF Provisioners with Terraform 
 08. AWS EKS Cluster, Public and Private Node Groups using Terraform
 09. Kubernetes Fundamentals
