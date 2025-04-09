@@ -7,11 +7,11 @@ rm -rf .terraform*
 rm -rf terraform.tfstate*
 
 ## Course Modules
-01. Infrastructure as Code (IaC)
-02. Terraform Install Tools, Command and Language Basics
-03. Terraform Settings, Providers and Resources 
+### 01. Infrastructure as Code (IaC)
+### 02. Terraform Install Tools, Command and Language Basics
+### 03. Terraform Settings, Providers and Resources 
 
-[ec2: website userdata]
+    [ec2: website userdata]
 
 ![alt text](image.png)
 
@@ -19,7 +19,7 @@ rm -rf terraform.tfstate*
 
 ![alt text](image-2.png)
 
-04. Terraform Input Variables, Output Values, Datasources
+### 04. Terraform Input Variables, Output Values, Datasources
 05. Terraform Loops, MetaArguments, Splat Operator and Functions
 06. AWS VPC 3-Tier Architecture Design using Terraform
 07. Bastion Host AWS EC2 Instances, Security Groups, TF Provisioners with Terraform 
