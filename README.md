@@ -2,6 +2,8 @@
 
 [![Image](https://stacksimplify.com/course-images/terraform-on-aws-eks-kubernetes.png "Terraform on AWS EKS Kubernetes IaC SRE- 50 Real-World Demos ")](https://links.stacksimplify.com/terraform-on-aws-eks-kubernetes-iac-sre)
 
+export AWS_PROFILE=default
+
 terraform destroy -auto-approve
 rm -rf .terraform*
 rm -rf terraform.tfstate*
@@ -89,6 +91,11 @@ rm -rf terraform.tfstate*
 10. Kubernetes Deployment and Service using YAML
 11. Terraform Kubernetes Provider - Kubernetes Deployment & Service
 12. Terraform Remote State Storage - AWS S3 & DynamoDB
+    create s3 bucket terraform-on-aws-eks-jou
+        create two directories: app1k8s,eks-cluster
+    create dynamo table
+        dev-ekscluster , dev-app1k8s
+![alt text](image-12.png)
 13. AWS EKS IAM Roles for Service Accounts (IRSA) using Terraform
 14. AWS EKS EBS CSI Driver Install with Self-Managed AddOn Option using Terraform
 15. AWS EKS EBS Demo using k8s YAML  (UserMgmt WebApp with MySQL DB)
