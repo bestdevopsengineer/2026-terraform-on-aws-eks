@@ -63,9 +63,14 @@ terraform destroy -var-file="vars/dev-west-2.tfvars"
 #  ================================
     terraform plan -var-file="vars/dev-west-2.tfvars"
     terraform apply -var-file="vars/dev-west-2.tfvars"
+    add port 80 -> 0.0.0.0
     chmod 400 <keypair>
     ssh -i <keypair> ec2-user@<public_dns>
     sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+    http://@ip:8081 browser
+    check maven installation mvn --version | add maven in manage jenkins tools
+    name:Maven_3_2_5
+    home: /usr/share/apache-maven
 
 ![alt text](image-1.png)
 
@@ -80,16 +85,31 @@ terraform destroy -var-file="vars/dev-west-2.tfvars"
     -AWS Credentials
     -Amazon ECR
     -Kubernetes CLI
-![alt text](image-2.png)
-
-    https://github.com/bestdevopsengineer/2devsecops-jenkins-k8s-tf-sast-sonarcloud-repo.git
-
-    snyk key= b40b576f-5568-416b-8abc-35227402387e
-
-![alt text](image-3.png)
+    -pipeline : stage view
 
 # To Create EKS cluster
     eksctl create cluster --name kubernetes-cluster --version 1.25 --region us-west-2 --nodegroup-name linux-nodes --node-type t2.xlarge --nodes 2 
+
+    cat /home/ec2-user/.kube/config 
+    copy that and save in a file on your laptop
+    wait for kubernetes to get deploy correctly
+    kubectl create ns devsecops
+
+![alt text](image-2.png)
+
+    https://github.com/bestdevopsengineer/terraform-on-aws-eks.git
+
+    https://github.com/bestdevopsengineer/2devsecops-jenkins-k8s-tf-sast-sonarcloud-repo.git
+
+    credentials:
+    SNYK_TOKEN = secret text : b40b576f-5568-416b-8abc-35227402387e
+    dockerlogin : username/password
+    aws-credentials : choose aws credentials
+    kubelogin: secret file
+
+![alt text](image-3.png)
+
+![alt text](image-6.png)
 
     kubectl get nodes
     kubectl create namespace devsecops
@@ -104,3 +124,5 @@ terraform destroy -var-file="vars/dev-west-2.tfvars"
 
     To delete instance profile use :
     aws iam delete-instance-profile --instance-profile-name test_profile
+
+![alt text](image-7.png)

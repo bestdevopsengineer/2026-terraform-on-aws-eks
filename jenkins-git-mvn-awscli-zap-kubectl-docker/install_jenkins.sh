@@ -20,15 +20,16 @@ sudo yum install jenkins -y
 sudo sed -i -e 's/Environment="JENKINS_PORT=[0-9]\+"/Environment="JENKINS_PORT=8081"/' /usr/lib/systemd/system/jenkins.service
 sudo systemctl daemon-reload
 sudo systemctl start jenkins
-sudo systemctl status jenkins
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
 sudo yum install unzip -y
 sudo unzip awscliv2.zip  
 sudo ./aws/install
 #ZAP is installed and can be run as zap.sh
-sudo wget https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2_16_1_unix.sh
-sudo chmod +x ZAP_2_16_1_unix.sh 
-sudo chmod +x ZAP_2_16_1_unix.sh -q
+sudo wget sudo wget https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2_16_1_unix.sh
+sudo chmod +x ZAP_2_16_1_unix.sh
+sudo ./ZAP_2_16_1_unix.sh -q -dir /opt/zap
+export PATH=$PATH:/opt/zap
+
 curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.7/2022-06-29/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
