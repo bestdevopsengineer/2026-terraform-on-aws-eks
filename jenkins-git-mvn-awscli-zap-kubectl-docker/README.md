@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/f934c486-695f-42e5-95c4-b840b553f66b)
+
+
 # AWS Infrastructure Creation using Terraform by A Security Guru
 
 Helpful Terraform Links:
