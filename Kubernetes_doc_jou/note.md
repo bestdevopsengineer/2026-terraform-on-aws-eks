@@ -6,7 +6,8 @@
     kubectl get services hello-minikube
   
     The easiest way to access this service is to let minikube launch a web browser for you:
-    minikube service hello-minikube
+    minikube service hello-minikube   OR  kubectl port-forward service/hello-minikube 7080:8080
+
 
 
 
